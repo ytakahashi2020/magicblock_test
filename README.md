@@ -1,4 +1,4 @@
-![](../image.png)
+![](./image.png)
 
 ### 1 Deploy the sample counter program
 
