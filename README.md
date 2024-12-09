@@ -23,7 +23,7 @@ ephemeral-rollups-sdk = { version = "0.0.6", features = ["anchor"] }
 2 set #[delegate] on the program  
 #[delegate]
 
-3 set use 
+3 set use  
 use ephemeral_rollups_sdk::anchor::{delegate, DelegationProgram};
 use ephemeral_rollups_sdk::cpi::delegate_account;
 
