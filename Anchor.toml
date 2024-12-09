@@ -11,8 +11,8 @@ magicblock_test = "81qSgM1GMoRsMzbzedNYpHKst93FKcUqXkTALUP4BFxa"
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
-wallet = "~/.config/solana/id.json"
+cluster = "Devnet"
+wallet = "/Users/ytakahashi/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
