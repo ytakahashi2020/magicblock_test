@@ -23,7 +23,11 @@ ephemeral-rollups-sdk = { version = "0.0.6", features = ["anchor"] }
 2 set #[delegate] on the program  
 #[delegate]
 
-3 set DelegateInput Struct  
+3 set use 
+use ephemeral_rollups_sdk::anchor::{delegate, DelegationProgram};
+use ephemeral_rollups_sdk::cpi::delegate_account;
+
+4 set DelegateInput Struct  
 
 1) payer -> Signer
 2) pda
@@ -34,7 +38,6 @@ ephemeral-rollups-sdk = { version = "0.0.6", features = ["anchor"] }
 7) delegation_program -> program 
 8) system program -> program
 
-
-4 set the delegate function
+5 set the delegate function
 
 delegate function
