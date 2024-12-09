@@ -27,10 +27,10 @@ pub mod anchor_counter {
         }
         Ok(())
     }
-    /// Delegate the account to the delegation program
+    
     pub fn delegate(ctx: Context<DelegateInput>) -> Result<()> {
-        let pda_seeds: &[&[u8]] = &[TEST_PDA_SEED];
-
+        let pda_seeds: $[$[u8]] = &[TEST_PDA_SEED];
+        
         delegate_account(
             &ctx.accounts.payer,
             &ctx.accounts.pda,
@@ -42,11 +42,10 @@ pub mod anchor_counter {
             &ctx.accounts.system_program,
             pda_seeds,
             0,
-            3_000,
+            3_000
         )?;
         Ok(())
     }
-}
 
 #[derive(Accounts)]
 pub struct Initialize<'info> {
@@ -67,32 +66,35 @@ pub struct Increment<'info> {
 #[derive(Accounts)]
 pub struct DelegateInput<'info> {
     pub payer: Signer<'info>,
-    /// CHECK The pda to delegate
     #[account(mut)]
     pub pda: AccountInfo<'info>,
-    /// CHECK: The program that owns the pda
-    #[account(address = crate::id())]
-    pub owner_program: AccountInfo<'info>,
-    /// CHECK The temporary buffer account used during delegation
     #[account(
-        mut, seeds = [ephemeral_rollups_sdk::consts::BUFFER, pda.key().as_ref()],
-        bump, seeds::program = crate::id()
+        address = crate::id()
+    )]
+    pub owner_program: AccountInfo<'info>,
+    #[account(
+        mut,
+        seeds = [ephemeral_rollups_sdk::consts::BUFFER, pda.key().as_ref()],
+        bump,
+        seeds::program = crate::id()
     )]
     pub buffer: AccountInfo<'info>,
-    /// CHECK: The delegation record account
     #[account(
-        mut, seeds = [ephemeral_rollups_sdk::consts::DELEGATION_RECORD, pda.key().as_ref()],
-        bump, seeds::program = delegation_program.key()
+        mut,
+        seeds = [ephemeral_rollups_sdk::consts::DELEGATION_RECORD,pda.key().as_ref()],
+        bump,
+        seeds::program = delegation_program.key()
     )]
     pub delegation_record: AccountInfo<'info>,
-    /// CHECK: The delegation metadata account
     #[account(
-        mut, seeds = [ephemeral_rollups_sdk::consts::DELEGATION_METADATA, pda.key().as_ref()],
-        bump, seeds::program = delegation_program.key()
+        mut,
+        seeds = [ephemeral_rollups_sdk::consts::DELEGATION_METADATA, pda.key().as_ref()],
+        bump,
+        seeds::program = delegation_program.key()
     )]
     pub delegation_metadata: AccountInfo<'info>,
     pub delegation_program: Program<'info, DelegationProgram>,
-    pub system_program: Program<'info, System>,
+    pub system_program: Program<'info, System>
 }
 
 #[account]
