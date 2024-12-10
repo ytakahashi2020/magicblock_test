@@ -8,11 +8,6 @@ git clone https://github.com/ytakahashi2020/magicblock_test.git
 2 Change wallet  
 change into your test wallet in Anchor.toml
 
-3 Build  
-anchor build
-
-4 Deploy  
-anchor deploy
 
 ### 2 Update a delegation function
 
@@ -41,3 +36,9 @@ use ephemeral_rollups_sdk::cpi::delegate_account;
 5 set the delegate function
 
 delegate function
+
+6 Build  
+anchor build
+
+7 Deploy  
+anchor deploy
